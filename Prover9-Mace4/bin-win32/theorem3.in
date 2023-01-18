@@ -1,0 +1,23 @@
+formulas(assumptions).
+%Sam, Michael, Bill, Richard, Matt.
+b0->(d(s) | -d(s)) & (d(mi) | -d(mi)) & (d(b) | -d(b)) & (d(r) | -d(r)) & (d(ma) | -d(ma)).
+b0.
+
+b1->(d(mi) & -d(b)) | (-d(mi) & d(b)).  
+b2->(d(r) & -d(s)) | (-d(r) & d(s)). 
+b3->(d(mi) & -d(ma)) | (-d(mi) & d(ma)). 
+b4->(d(b) & -d(ma)) | (-d(b) & d(ma)).
+b5->(d(b) & -d(r)) | (-d(b) & d(r)).
+b2.
+b5.
+b6->(-d(r) &-d(b)) | (d(r) & d(b)) | (-d(r) & d(b)).
+b6.
+b7->(b1 & b3) | (b1 & b4) | (b4 & b3).
+b7.
+end_of_list.
+
+formulas(goals).
+d(ma)&d(mi).
+end_of_list.
+%s b
+%end of instructions

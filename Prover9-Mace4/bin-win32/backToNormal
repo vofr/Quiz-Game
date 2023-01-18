@@ -1,0 +1,255 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(max_seconds, 60).
+end_if.
+
+formulas(assumptions).
+
+%a and b are something different 
+ differentFrom(a,b).
+ differentFrom(a,c).
+ differentFrom(a,d).
+ differentFrom(a,e).
+ differentFrom(b,c).
+ differentFrom(b,d).
+ differentFrom(b,e).
+ differentFrom(c,d).
+ differentFrom(c,e).
+ differentFrom(d,e).
+
+ %the "differentFrom" relation is symmetrical
+ %so we won't bother to write it in both directions
+ differentFrom(x,y) ->  differentFrom(y,x).
+
+% Define the "right neighbor" relation among a,b,c,d,e
+ rightneighbor(a,b). %b is immediately to the right of a
+ rightneighbor(b,c).
+ rightneighbor(c,d).
+ rightneighbor(d,e).
+ -rightneighbor(a,a).
+ -rightneighbor(a,c).
+ -rightneighbor(a,d).
+ -rightneighbor(a,e).
+ -rightneighbor(b,a).
+ -rightneighbor(b,b).
+ -rightneighbor(b,d).
+ -rightneighbor(b,e).
+ -rightneighbor(c,a).
+ -rightneighbor(c,b).
+ -rightneighbor(c,c).
+ -rightneighbor(c,e).
+ -rightneighbor(d,a).
+ -rightneighbor(d,b).
+ -rightneighbor(d,c).
+ -rightneighbor(d,d).
+ -rightneighbor(e,a).
+ -rightneighbor(e,b).
+ -rightneighbor(e,c).
+ -rightneighbor(e,d).
+ -rightneighbor(e,e).
+
+between(a,b,c).
+between(a,b,d).
+between(a,c,d).
+between(a,b,e).
+between(a,c,e).
+between(a,d,e).
+between(b,c,d).
+between(b,c,e).
+between(b,d,e).
+between(c,d,e).
+
+-between (e,e,e) .
+-between (e,e,d) .
+-between (e,e,c) .
+-between (e,e,b) .
+-between (e,e,a) .
+-between (e,d,e) .
+-between (e,d,d) .
+-between (e,d,c) .
+-between (e,d,b) .
+-between (e,d,a) .
+-between (e,c,e) .
+-between (e,c,d) .
+-between (e,c,c) .
+-between (e,c,b) .
+-between (e,c,a) .
+-between (e,b,e) .
+-between (e,b,d) .
+-between (e,b,c) .
+-between (e,b,b) .
+-between (e,b,a) .
+-between (e,a,e) .
+-between (e,a,d) .
+-between (e,a,c) .
+-between (e,a,b) .
+-between (e,a,a) .
+-between (d,e,e) .
+-between (d,e,d) .
+-between (d,e,c) .
+-between (d,e,b) .
+-between (d,e,a) .
+-between (d,d,e) .
+-between (d,d,d) .
+-between (d,d,c) .
+-between (d,d,b) .
+-between (d,d,a) .
+-between (d,c,e) .
+-between (d,c,d) .
+-between (d,c,c) .
+-between (d,c,b) .
+-between (d,c,a) .
+-between (d,b,e) .
+-between (d,b,d) .
+-between (d,b,c) .
+-between (d,b,b) .
+-between (d,b,a) .
+-between (d,a,e) .
+-between (d,a,d) .
+-between (d,a,c) .
+-between (d,a,b) .
+-between (d,a,a) .
+-between (c,e,e) .
+-between (c,e,d) .
+-between (c,e,c) .
+-between (c,e,b) .
+-between (c,e,a) .
+-between (c,d,d) .
+-between (c,d,c) .
+-between (c,d,b) .
+-between (c,d,a) .
+-between (c,c,e) .
+-between (c,c,d) .
+-between (c,c,c) .
+-between (c,c,b) .
+-between (c,c,a) .
+-between (c,b,e) .
+-between (c,b,d) .
+-between (c,b,c) .
+-between (c,b,b) .
+-between (c,b,a) .
+-between (c,a,e) .
+-between (c,a,d) .
+-between (c,a,c) .
+-between (c,a,b) .
+-between (c,a,a) .
+-between (b,e,e) .
+-between (b,e,d) .
+-between (b,e,c) .
+-between (b,e,b) .
+-between (b,e,a) .
+-between (b,d,d) .
+-between (b,d,c) .
+-between (b,d,b) .
+-between (b,d,a) .
+-between (b,c,c) .
+-between (b,c,b) .
+-between (b,c,a) .
+-between (b,b,e) .
+-between (b,b,d) .
+-between (b,b,c) .
+-between (b,b,b) .
+-between (b,b,a) .
+-between (b,a,e) .
+-between (b,a,d) .
+-between (b,a,c) .
+-between (b,a,b) .
+-between (b,a,a) .
+-between (a,e,e) .
+-between (a,e,d) .
+-between (a,e,c) .
+-between (a,e,b) .
+-between (a,e,a) .
+-between (a,d,d) .
+-between (a,d,c) .
+-between (a,d,b) .
+-between (a,d,a) .
+-between (a,c,c) .
+-between (a,c,b) .
+-between (a,c,a) . 
+-between (a,b,b) .
+-between (a,b,a) .
+-between (a,a,e) .
+-between (a,a,d) .
+-between (a,a,c) .
+-between (a,a,b) .
+-between (a,a,a) .
+
+ %you are the neighbor of someone if you live just to his right 
+ %or justto his left, so HE lives just to your right
+ rightneighbor(x,y) | rightneighbor(y,x) <-> neighbor(x,y).
+
+    blue(x) | green(x) | pink(x) | red(x) | white(x).
+    ann(x) | cheryl(x) | jill(x) | lori(x) | susan(x).
+    australia(x) | chile(x) | jamaica(x) | morocco(x) | thailand(x).
+    brother(x) | cousin(x) | grandfather(x) | nephew(x) | uncle(x).
+    5d(x) | 10d(x) | 15d(x) | 20d(x) | 25d(x).
+    30y(x) | 35y(x) | 40y(x) | 45y(x) | 50y(x).
+
+    blue(x) & blue(y) -> -differentFrom(x,y).
+    green(x) & green(y) -> -differentFrom(x,y).
+    pink(x) & pink(y) -> -differentFrom(x,y).
+    red(x) & red(y) -> -differentFrom(x,y).
+    white(x) & white(y) -> -differentFrom(x,y).
+    ann(x) & ann(y) -> -differentFrom(x,y).
+    cheryl(x) & cheryl(y) -> -differentFrom(x,y).
+    jill(x) & jill(y) -> -differentFrom(x,y).
+    lori(x) & lori(y) -> -differentFrom(x,y).
+    susan(x) & susan(y) -> -differentFrom(x,y).
+    australia(x) & australia(y) -> -differentFrom(x,y).
+    chile(x) & chile(y) -> -differentFrom(x,y).
+    jamaica(x) & jamaica(y) -> -differentFrom(x,y).
+    morocco(x) & morocco(y) -> -differentFrom(x,y).
+    thailand(x) & thailand(y) -> -differentFrom(x,y).
+    5d(x) & 5d(y) -> -differentFrom(x,y).
+    10d(x) & 10d(y) -> -differentFrom(x,y).
+    15d(x) & 15d(y) -> -differentFrom(x,y).
+    20d(x) & 20d(y) -> -differentFrom(x,y).
+    25d(x) & 25d(y) -> -differentFrom(x,y).
+    30y(x) & 30y(y) -> -differentFrom(x,y).
+    35y(x) & 35y(y) -> -differentFrom(x,y).
+    40y(x) & 40y(y) -> -differentFrom(x,y).
+    45y(x) & 45y(y) -> -differentFrom(x,y).
+    50y(x) & 50y(y) -> -differentFrom(x,y).
+    brother(x) & brother(y) -> -differentFrom(x,y).
+    cousin(x) & cousin(y) -> -differentFrom(x,y).
+    grandfather(x) & grandfather(y) -> -differentFrom(x,y).
+    nephew(x) & nephew(y) -> -differentFrom(x,y).
+    uncle(x) & uncle(y) -> -differentFrom(x,y).
+
+% The clues.
+    blue(x)<->morocco(x).
+    50y(x)<->15d(x).
+    35y(x) & nephew(y)-> rightneighbor(x,y).
+    green(x) & 45y(y) -> between(x,y,e) | 45y(e).
+    50y(c).
+    green(x) & 5d(y) -> between(a,x,y) | green(a).
+    uncle(e).
+    jill(x) & australia(y) ->neighbor(x,y).
+    35y(x) & 20d(y) ->rightneighbor(x,y).
+    pink(x) &white(y) & red(z) -> between(x,y,z).
+    chile(x) & 45y(y) -> rightneighbor(x,y).
+    red(x) & 40y(y) -> between(x,y,e) | 40y(e).
+    15d(x) & cheryl(y) -> rightneighbor(x,y).
+    chile(x) <->brother(x).
+    australia(x) & grandfather(y)->rightneighbor(x,y).
+    lori(x)<->15d(x).
+    ann(x)&brother(y)->neighbor(x,y).
+    25d(x)& white(y) & ann(z)-> between(x,y,z).
+    grandfather(x) & green(y) -> neighbor(x,y).
+    jill(x)<->pink(x).
+    thailand(x)&30y(y)->rightneighbor(x,y).
+
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+

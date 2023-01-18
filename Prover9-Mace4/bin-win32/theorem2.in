@@ -1,0 +1,62 @@
+formulas(assumptions).
+%5 persons a b c d e
+%mafia politist inocent
+m(a)->-p(a)&-i(a).
+m(b)->-p(b)&-i(b).
+m(c)->-p(c)&-i(c).
+m(d)->-p(d)&-i(d).
+m(e)->-p(e)&-i(e).
+
+p(a)->-m(a)&-i(a).
+p(b)->-m(b)&-i(b).
+p(c)->-m(c)&-i(c).
+p(d)->-m(d)&-i(d).
+p(e)->-m(e)&-i(e).
+
+i(a)->-p(a)&-m(a).
+i(b)->-p(b)&-m(b).
+i(c)->-p(c)&-m(c).
+i(d)->-p(d)&-m(d).
+i(e)->-p(e)&-m(e).
+
+
+%2 mafia
+b1->(m(a) & m(b)) | (m(a) & m(c)) | (m(a) & m(d)) | (m(a) & m(e)) | (m(b) & m(c)) | (m(b) & m(d)) | (m(b) & m(e)) |  (m(c) & m(d)) | (m(c) & m(e)) | (m(d) & m(e)).
+b1.
+
+%1 politist
+b2->(p(a) & -p(b) & -p(c) & -p(d) & -p(e)) | (p(b) & -p(a) & -p(c) & -p(d) & -p(e)) | (-p(a) & -p(b) & p(c) & -p(d) & -p(e)) | (-p(a) & -p(b) & -p(c) & p(d) & -p(e)) | (-p(a) & -p(b) & -p(c) & -p(d) & p(e)). 
+b2.
+
+%2 inocenti
+b3->(i(a) & i(b)) | (i(a) & i(c)) | (i(a) & i(d)) | (i(a) & i(e)) | (i(b) & i(c)) | (i(b) & i(d)) | (i(b) & i(e)) |  (i(c) & i(d)) | (i(c) & i(e)) | (i(d) & i(e)).
+b3.
+
+%toate cazurile de joc posibile
+
+b5->m(a) | p(a) | i(a).
+b5->m(b) | p(b) | i(b).
+b5->m(c) | p(c) | i(c).
+b5->m(d) | p(d) | i(d).
+b5->m(e) | p(e) | i(e).
+b5.
+
+%A: I know who B is.
+% since A is making a first statement starting with i know it means he can t be innocent
+b6-> -i(a).
+b6.
+
+%B also isn’t mafia, since if they were then A would be the detective, but B would have known this fact as soon as A stated their knowledge and so would have lied about knowing who the detective was.
+p(b).
+
+%B: I know who the detective is.
+%same logic
+b7-> -i(b). 
+b7.
+
+m(e).
+end_of_list.
+
+formulas(goals).
+m(a)&m(e)&p(b)&i(c)&i(d).
+end_of_list.

@@ -1,0 +1,214 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 13196 was started by vasio on DESKTOP-250C2NI,
+Wed Jan 18 18:09:19 2023
+The command was "prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+b0 -> (d(s) | -d(s)) & (d(mi) | -d(mi)) & (d(b) | -d(b)) & (d(r) | -d(r)) & (d(ma) | -d(ma)).
+b0.
+b1 -> d(mi) & -d(b) | -d(mi) & d(b).
+b2 -> d(r) & -d(s) | -d(r) & d(s).
+b3 -> d(mi) & -d(ma) | -d(mi) & d(ma).
+b4 -> d(b) & -d(ma) | -d(b) & d(ma).
+b5 -> d(b) & -d(r) | -d(b) & d(r).
+b2.
+b5.
+b6 -> -d(r) & -d(b) | d(r) & d(b) | -d(r) & d(b).
+b6.
+b7 -> b1 & b3 | b1 & b4 | b4 & b3.
+b7.
+end_of_list.
+
+formulas(goals).
+d(ma) & d(mi).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 b0 -> (d(s) | -d(s)) & (d(mi) | -d(mi)) & (d(b) | -d(b)) & (d(r) | -d(r)) & (d(ma) | -d(ma)) # label(non_clause).  [assumption].
+2 b1 -> d(mi) & -d(b) | -d(mi) & d(b) # label(non_clause).  [assumption].
+3 b2 -> d(r) & -d(s) | -d(r) & d(s) # label(non_clause).  [assumption].
+4 b3 -> d(mi) & -d(ma) | -d(mi) & d(ma) # label(non_clause).  [assumption].
+5 b4 -> d(b) & -d(ma) | -d(b) & d(ma) # label(non_clause).  [assumption].
+6 b5 -> d(b) & -d(r) | -d(b) & d(r) # label(non_clause).  [assumption].
+7 b6 -> -d(r) & -d(b) | d(r) & d(b) | -d(r) & d(b) # label(non_clause).  [assumption].
+8 b7 -> b1 & b3 | b1 & b4 | b4 & b3 # label(non_clause).  [assumption].
+9 d(ma) & d(mi) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+b0.  [assumption].
+-b1 | d(mi) | d(b).  [clausify(2)].
+-b1 | -d(b) | -d(mi).  [clausify(2)].
+-b2 | d(r) | d(s).  [clausify(3)].
+-b2 | -d(s) | -d(r).  [clausify(3)].
+-b3 | d(mi) | d(ma).  [clausify(4)].
+-b3 | -d(ma) | -d(mi).  [clausify(4)].
+-b4 | d(b) | d(ma).  [clausify(5)].
+-b4 | -d(ma) | -d(b).  [clausify(5)].
+-b5 | d(b) | d(r).  [clausify(6)].
+-b5 | -d(r) | -d(b).  [clausify(6)].
+b2.  [assumption].
+b5.  [assumption].
+-b6 | -d(r) | d(b).  [clausify(7)].
+b6.  [assumption].
+-b7 | b1 | b3.  [clausify(8)].
+-b7 | b1 | b4.  [clausify(8)].
+-b7 | b3 | b4.  [clausify(8)].
+b7.  [assumption].
+-d(ma) | -d(mi).  [deny(9)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ b7, b1, b3, b4, b2, b5, b6, b0, d ]).
+Function symbol precedence:  function_order([ b, r, ma, mi, s ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+10 b0.  [assumption].
+11 -b1 | d(mi) | d(b).  [clausify(2)].
+12 -b1 | -d(b) | -d(mi).  [clausify(2)].
+15 -b3 | d(mi) | d(ma).  [clausify(4)].
+17 -b4 | d(b) | d(ma).  [clausify(5)].
+18 -b4 | -d(ma) | -d(b).  [clausify(5)].
+21 b2.  [assumption].
+22 b5.  [assumption].
+24 b6.  [assumption].
+28 b7.  [assumption].
+29 -d(ma) | -d(mi).  [deny(9)].
+30 -d(s) | -d(r).  [back_unit_del(14),unit_del(a,21)].
+31 d(r) | d(s).  [back_unit_del(13),unit_del(a,21)].
+32 -d(r) | -d(b).  [back_unit_del(20),unit_del(a,22)].
+33 d(b) | d(r).  [back_unit_del(19),unit_del(a,22)].
+34 -d(r) | d(b).  [back_unit_del(23),unit_del(a,24)].
+35 b3 | b4.  [back_unit_del(27),unit_del(a,28)].
+36 b1 | b4.  [back_unit_del(26),unit_del(a,28)].
+37 b1 | b3.  [back_unit_del(25),unit_del(a,28)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.09 seconds.
+
+given #1 (I,wt=1): 10 b0.  [assumption].
+
+given #2 (I,wt=5): 11 -b1 | d(mi) | d(b).  [clausify(2)].
+
+given #3 (I,wt=5): 12 -b1 | -d(b) | -d(mi).  [clausify(2)].
+
+given #4 (I,wt=5): 15 -b3 | d(mi) | d(ma).  [clausify(4)].
+
+given #5 (I,wt=5): 17 -b4 | d(b) | d(ma).  [clausify(5)].
+
+given #6 (I,wt=5): 18 -b4 | -d(ma) | -d(b).  [clausify(5)].
+
+given #7 (I,wt=1): 21 b2.  [assumption].
+
+given #8 (I,wt=1): 22 b5.  [assumption].
+
+given #9 (I,wt=1): 24 b6.  [assumption].
+
+given #10 (I,wt=1): 28 b7.  [assumption].
+
+given #11 (I,wt=4): 29 -d(ma) | -d(mi).  [deny(9)].
+
+given #12 (I,wt=4): 30 -d(s) | -d(r).  [back_unit_del(14),unit_del(a,21)].
+
+given #13 (I,wt=4): 31 d(r) | d(s).  [back_unit_del(13),unit_del(a,21)].
+
+given #14 (I,wt=4): 32 -d(r) | -d(b).  [back_unit_del(20),unit_del(a,22)].
+
+given #15 (I,wt=4): 33 d(b) | d(r).  [back_unit_del(19),unit_del(a,22)].
+
+given #16 (I,wt=4): 34 -d(r) | d(b).  [back_unit_del(23),unit_del(a,24)].
+
+given #17 (I,wt=2): 35 b3 | b4.  [back_unit_del(27),unit_del(a,28)].
+
+given #18 (I,wt=2): 36 b1 | b4.  [back_unit_del(26),unit_del(a,28)].
+
+given #19 (I,wt=2): 37 b1 | b3.  [back_unit_del(25),unit_del(a,28)].
+
+given #20 (A,wt=2): 38 d(b).  [resolve(34,a,33,b),merge(b)].
+
+given #21 (F,wt=2): 39 -d(r).  [back_unit_del(32),unit_del(b,38)].
+
+given #22 (F,wt=3): 40 -b4 | -d(ma).  [back_unit_del(18),unit_del(c,38)].
+
+given #23 (F,wt=3): 41 -b1 | -d(mi).  [back_unit_del(12),unit_del(b,38)].
+
+given #24 (T,wt=2): 42 d(s).  [back_unit_del(31),unit_del(a,39)].
+
+given #25 (T,wt=5): 43 b1 | d(mi) | d(ma).  [resolve(37,b,15,a)].
+
+============================== STATISTICS ============================
+
+Given=25. Generated=38. Kept=34. proofs=0.
+Usable=16. Sos=0. Demods=0. Limbo=0, Disabled=38. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=4. Back_subsumed=6.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=12.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=32.
+Megabytes=0.04.
+User_CPU=0.09, System_CPU=0.12, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 13196 exit (sos_empty) Wed Jan 18 18:09:19 2023

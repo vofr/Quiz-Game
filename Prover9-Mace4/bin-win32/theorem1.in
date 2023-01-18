@@ -1,0 +1,103 @@
+formulas(assumptions).
+%a ah s d ab
+%un singur killer
+k(a) -> -v(a) & -k(ah) & -k(s) & -k(d) & -k(ab).
+k(ah) -> -k(a) & -v(ah) & -k(s) & -k(d) & -k(ab).
+k(s) -> -k(a) & -k(ah) & -v(s) & -k(d) & -k(ab).
+k(d) -> -k(a) & -k(ah) & -k(s) & -v(d) & -k(ab).
+k(ab) -> -k(a) & -k(ah) & -k(s) & -k(d) &-v(ab).
+-k(a) -> k(ah) | k(s) | k(d) | k(ab).
+-k(ah) -> k(a) | k(s) | k(d) | k(ab).
+-k(s) -> k(a) | k(ah) | k(d) | k(ab).
+-k(d) -> k(a) | k(ah) | k(s) | k(ab).
+-k(ab) -> k(a) | k(ah) | k(s) | k(d).
+
+%o singura victima
+v(a) -> -k(a) & -v(ah) & -v(s) & -v(d) & -v(ab).
+v(ah) -> -v(a) & -k(ah) & -v(s) & -v(d) & -v(ab).
+v(s) -> -v(a) & -v(ah) & -k(s) & -v(d) & -v(ab).
+v(d) -> -v(a) & -v(ah) & -v(s) & -k(d) & -v(ab).
+v(ab) -> -v(a) & -v(ah) & -v(s) & -v(d) &-k(ab).
+-v(a) -> v(ah) | v(s) | v(d) | v(ab).
+-v(ah) -> v(a) | v(s) | v(d) | v(ab).
+-v(s) -> v(a) | v(ah) | v(d) | v(ab).
+-v(d) -> v(a) | v(ah) | v(s) | v(ab).
+-v(ab) -> v(a) | v(ah) | v(s) | v(d).
+
+%3 inocenti
+-k(a) & -v(a) -> i(a).
+-k(ah) & -v(ah) -> i(ah).
+-k(s) & -v(s) -> i(s).
+-k(d) & -v(d) -> i(d).
+-k(ab) & -v(ab) -> i(ab).
+
+i(a)->-k(a)&-v(a).
+i(ah)->-k(ah)&-v(ah).
+i(s)->-k(s)&-v(s).
+i(d)->-k(d)&-v(d).
+i(ab)->-k(ab)&-v(ab).
+
+i(a)->k(ah) | k(s) | k(d) | k(ab).
+i(ah)->k(a) | k(s) | k(d) | k(ab).
+i(s)->k(a) | k(ah) | k(d) | k(ab).
+i(d)->k(a) | k(ah) | k(s) | k(ab).
+i(ab)->k(a) | k(ah) | k(s) | k(d).
+
+i(a) -> v(ah) | v(s) | v(d) | v(ab).
+i(ah) -> v(a) | v(s) | v(d) | v(ab).
+i(s) -> v(a) | v(ah) | v(d) | v(ab).
+i(d) -> v(a) | v(ah) | v(s) | v(ab).
+i(ab) -> v(a) | v(ah) | v(s) | v(d).
+
+k(a) -> v(ah) | v(s) | v(d) | v(ab).
+k(ah) -> v(a) | v(s) | v(d) | v(ab).
+k(s) -> v(a) | v(ah) | v(d) | v(ab).
+k(d) -> v(a) | v(ah) | v(s) | v(ab).
+k(ab) -> v(a) | v(ah) | v(s) | v(d).
+b7-> k(a) | k(ah) | k(ab).
+b7.
+
+%A man and a woman were together in a bar at the time of the murder.
+b1->(i(a) & i(ah)) | (i(a) & i(s)) | (i(a) & i(ab)) | (i(d) & i(ah)) | (i(d) & i(s)) | (i(d) & i(ab)).
+b1.
+
+%The victim and the killer were together on a beach at the time of the murder.
+%The killer was younger than the victim.
+b2->(k(s) & v(a)) | (k(s) & v(ah)) | (k(s) & v(ab)) | (k(d) & v(a)) | (k(d) & v(ah)) | (k(d) & v(ab)) |  (k(a) & v(ah)) | (k(a) & v(ab)) |  (k(ab) & v(ah)) | (k(ah) & v (ab)).
+b2.  
+
+(k(s) & v(a))-> i(ah) & i(d) & i(ab).
+(k(s) & v(ah))-> i(a) & i(d) & i(ab).
+(k(s) & v(ab))-> i(a) & i(ah) & i(d).
+
+(k(d) & v(a))-> i(ah) & i(s) & i(ab).
+(k(d) & v(ah))-> i(a) & i(s) & i(ab).
+(k(d) & v(ab))-> i(a) & i(ah) & i(s).
+
+(k(a) & v(ah))-> i(s) & i(d) & i(ab).
+(k(a) & v(ab))-> i(ab) & i(s) & i(d).
+
+(k(ah) & v(ab))-> i(a) & i(s) & i(d).
+
+(k(ab) & v(ah))-> i(a) & i(s) & i(d).
+
+%One of Alice’s two children was alone at the time of the murder.
+b3-> (i(d) & k(s)) | (i(s)&k(d)) | (i(s) & i(d)).
+b3.
+
+%Alice and her husband were not together at the time of the murder
+
+b4->(v(a)&i(ah)) | (k(a)&i(ah)) | (i(a)&v(ah)) | (i(a)&k(ah)).
+b4.
+
+%The victim’s twin was not the killer.
+b5->(v(a)&i(ab)) | (i(a)&v(ab)) | (v(s)&i(d)) | (i(s)&v(d)).
+b5.
+
+end_of_list.
+
+formulas(goals).
+v(ab).
+end_of_list.
+
+%end of instructions

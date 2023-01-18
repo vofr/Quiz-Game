@@ -1,0 +1,17 @@
+
+formulas(assumptions).
+%5 persons a b c d e
+m(a)->-d(a)&-i(a).
+m(b)->-d(b)&-i(b).
+m(c)->-d(c)&-i(c).
+m(d)->-d(d)&-i(d).
+m(e)->-d(e)&-i(e).
+
+%2 mafia
+b1->(m(a) & m(b)) | (m(a) & m(c)) | (m(a) & m(d)) | (m(a) & m(e)) | (m(b) & m(c)) | (m(b) & m(d)) | (m(b) & m(e)) |  (m(c) & m(d)) | (m(c) & m(e)) | ((m(d) & m(e))
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+

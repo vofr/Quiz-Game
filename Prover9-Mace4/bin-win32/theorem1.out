@@ -1,0 +1,706 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 15236 was started by vasio on DESKTOP-250C2NI,
+Wed Jan 18 18:08:57 2023
+The command was "prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+k(a) -> -v(a) & -k(ah) & -k(s) & -k(d) & -k(ab).
+k(ah) -> -k(a) & -v(ah) & -k(s) & -k(d) & -k(ab).
+k(s) -> -k(a) & -k(ah) & -v(s) & -k(d) & -k(ab).
+k(d) -> -k(a) & -k(ah) & -k(s) & -v(d) & -k(ab).
+k(ab) -> -k(a) & -k(ah) & -k(s) & -k(d) & -v(ab).
+-k(a) -> k(ah) | k(s) | k(d) | k(ab).
+-k(ah) -> k(a) | k(s) | k(d) | k(ab).
+-k(s) -> k(a) | k(ah) | k(d) | k(ab).
+-k(d) -> k(a) | k(ah) | k(s) | k(ab).
+-k(ab) -> k(a) | k(ah) | k(s) | k(d).
+v(a) -> -k(a) & -v(ah) & -v(s) & -v(d) & -v(ab).
+v(ah) -> -v(a) & -k(ah) & -v(s) & -v(d) & -v(ab).
+v(s) -> -v(a) & -v(ah) & -k(s) & -v(d) & -v(ab).
+v(d) -> -v(a) & -v(ah) & -v(s) & -k(d) & -v(ab).
+v(ab) -> -v(a) & -v(ah) & -v(s) & -v(d) & -k(ab).
+-v(a) -> v(ah) | v(s) | v(d) | v(ab).
+-v(ah) -> v(a) | v(s) | v(d) | v(ab).
+-v(s) -> v(a) | v(ah) | v(d) | v(ab).
+-v(d) -> v(a) | v(ah) | v(s) | v(ab).
+-v(ab) -> v(a) | v(ah) | v(s) | v(d).
+-k(a) & -v(a) -> i(a).
+-k(ah) & -v(ah) -> i(ah).
+-k(s) & -v(s) -> i(s).
+-k(d) & -v(d) -> i(d).
+-k(ab) & -v(ab) -> i(ab).
+i(a) -> -k(a) & -v(a).
+i(ah) -> -k(ah) & -v(ah).
+i(s) -> -k(s) & -v(s).
+i(d) -> -k(d) & -v(d).
+i(ab) -> -k(ab) & -v(ab).
+i(a) -> k(ah) | k(s) | k(d) | k(ab).
+i(ah) -> k(a) | k(s) | k(d) | k(ab).
+i(s) -> k(a) | k(ah) | k(d) | k(ab).
+i(d) -> k(a) | k(ah) | k(s) | k(ab).
+i(ab) -> k(a) | k(ah) | k(s) | k(d).
+i(a) -> v(ah) | v(s) | v(d) | v(ab).
+i(ah) -> v(a) | v(s) | v(d) | v(ab).
+i(s) -> v(a) | v(ah) | v(d) | v(ab).
+i(d) -> v(a) | v(ah) | v(s) | v(ab).
+i(ab) -> v(a) | v(ah) | v(s) | v(d).
+k(a) -> v(ah) | v(s) | v(d) | v(ab).
+k(ah) -> v(a) | v(s) | v(d) | v(ab).
+k(s) -> v(a) | v(ah) | v(d) | v(ab).
+k(d) -> v(a) | v(ah) | v(s) | v(ab).
+k(ab) -> v(a) | v(ah) | v(s) | v(d).
+b7 -> k(a) | k(ah) | k(ab).
+b7.
+b1 -> i(a) & i(ah) | i(a) & i(s) | i(a) & i(ab) | i(d) & i(ah) | i(d) & i(s) | i(d) & i(ab).
+b1.
+b2 -> k(s) & v(a) | k(s) & v(ah) | k(s) & v(ab) | k(d) & v(a) | k(d) & v(ah) | k(d) & v(ab) | k(a) & v(ah) | k(a) & v(ab) | k(ab) & v(ah) | k(ah) & v(ab).
+b2.
+k(s) & v(a) -> i(ah) & i(d) & i(ab).
+k(s) & v(ah) -> i(a) & i(d) & i(ab).
+k(s) & v(ab) -> i(a) & i(ah) & i(d).
+k(d) & v(a) -> i(ah) & i(s) & i(ab).
+k(d) & v(ah) -> i(a) & i(s) & i(ab).
+k(d) & v(ab) -> i(a) & i(ah) & i(s).
+k(a) & v(ah) -> i(s) & i(d) & i(ab).
+k(a) & v(ab) -> i(ab) & i(s) & i(d).
+k(ah) & v(ab) -> i(a) & i(s) & i(d).
+k(ab) & v(ah) -> i(a) & i(s) & i(d).
+b3 -> i(d) & k(s) | i(s) & k(d) | i(s) & i(d).
+b3.
+b4 -> v(a) & i(ah) | k(a) & i(ah) | i(a) & v(ah) | i(a) & k(ah).
+b4.
+b5 -> v(a) & i(ab) | i(a) & v(ab) | v(s) & i(d) | i(s) & v(d).
+b5.
+end_of_list.
+
+formulas(goals).
+v(ab).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 k(a) -> -v(a) & -k(ah) & -k(s) & -k(d) & -k(ab) # label(non_clause).  [assumption].
+2 k(ah) -> -k(a) & -v(ah) & -k(s) & -k(d) & -k(ab) # label(non_clause).  [assumption].
+3 k(s) -> -k(a) & -k(ah) & -v(s) & -k(d) & -k(ab) # label(non_clause).  [assumption].
+4 k(d) -> -k(a) & -k(ah) & -k(s) & -v(d) & -k(ab) # label(non_clause).  [assumption].
+5 k(ab) -> -k(a) & -k(ah) & -k(s) & -k(d) & -v(ab) # label(non_clause).  [assumption].
+6 -k(a) -> k(ah) | k(s) | k(d) | k(ab) # label(non_clause).  [assumption].
+7 -k(ah) -> k(a) | k(s) | k(d) | k(ab) # label(non_clause).  [assumption].
+8 -k(s) -> k(a) | k(ah) | k(d) | k(ab) # label(non_clause).  [assumption].
+9 -k(d) -> k(a) | k(ah) | k(s) | k(ab) # label(non_clause).  [assumption].
+10 -k(ab) -> k(a) | k(ah) | k(s) | k(d) # label(non_clause).  [assumption].
+11 v(a) -> -k(a) & -v(ah) & -v(s) & -v(d) & -v(ab) # label(non_clause).  [assumption].
+12 v(ah) -> -v(a) & -k(ah) & -v(s) & -v(d) & -v(ab) # label(non_clause).  [assumption].
+13 v(s) -> -v(a) & -v(ah) & -k(s) & -v(d) & -v(ab) # label(non_clause).  [assumption].
+14 v(d) -> -v(a) & -v(ah) & -v(s) & -k(d) & -v(ab) # label(non_clause).  [assumption].
+15 v(ab) -> -v(a) & -v(ah) & -v(s) & -v(d) & -k(ab) # label(non_clause).  [assumption].
+16 -v(a) -> v(ah) | v(s) | v(d) | v(ab) # label(non_clause).  [assumption].
+17 -v(ah) -> v(a) | v(s) | v(d) | v(ab) # label(non_clause).  [assumption].
+18 -v(s) -> v(a) | v(ah) | v(d) | v(ab) # label(non_clause).  [assumption].
+19 -v(d) -> v(a) | v(ah) | v(s) | v(ab) # label(non_clause).  [assumption].
+20 -v(ab) -> v(a) | v(ah) | v(s) | v(d) # label(non_clause).  [assumption].
+21 -k(a) & -v(a) -> i(a) # label(non_clause).  [assumption].
+22 -k(ah) & -v(ah) -> i(ah) # label(non_clause).  [assumption].
+23 -k(s) & -v(s) -> i(s) # label(non_clause).  [assumption].
+24 -k(d) & -v(d) -> i(d) # label(non_clause).  [assumption].
+25 -k(ab) & -v(ab) -> i(ab) # label(non_clause).  [assumption].
+26 i(a) -> -k(a) & -v(a) # label(non_clause).  [assumption].
+27 i(ah) -> -k(ah) & -v(ah) # label(non_clause).  [assumption].
+28 i(s) -> -k(s) & -v(s) # label(non_clause).  [assumption].
+29 i(d) -> -k(d) & -v(d) # label(non_clause).  [assumption].
+30 i(ab) -> -k(ab) & -v(ab) # label(non_clause).  [assumption].
+31 i(a) -> k(ah) | k(s) | k(d) | k(ab) # label(non_clause).  [assumption].
+32 i(ah) -> k(a) | k(s) | k(d) | k(ab) # label(non_clause).  [assumption].
+33 i(s) -> k(a) | k(ah) | k(d) | k(ab) # label(non_clause).  [assumption].
+34 i(d) -> k(a) | k(ah) | k(s) | k(ab) # label(non_clause).  [assumption].
+35 i(ab) -> k(a) | k(ah) | k(s) | k(d) # label(non_clause).  [assumption].
+36 i(a) -> v(ah) | v(s) | v(d) | v(ab) # label(non_clause).  [assumption].
+37 i(ah) -> v(a) | v(s) | v(d) | v(ab) # label(non_clause).  [assumption].
+38 i(s) -> v(a) | v(ah) | v(d) | v(ab) # label(non_clause).  [assumption].
+39 i(d) -> v(a) | v(ah) | v(s) | v(ab) # label(non_clause).  [assumption].
+40 i(ab) -> v(a) | v(ah) | v(s) | v(d) # label(non_clause).  [assumption].
+41 k(a) -> v(ah) | v(s) | v(d) | v(ab) # label(non_clause).  [assumption].
+42 k(ah) -> v(a) | v(s) | v(d) | v(ab) # label(non_clause).  [assumption].
+43 k(s) -> v(a) | v(ah) | v(d) | v(ab) # label(non_clause).  [assumption].
+44 k(d) -> v(a) | v(ah) | v(s) | v(ab) # label(non_clause).  [assumption].
+45 k(ab) -> v(a) | v(ah) | v(s) | v(d) # label(non_clause).  [assumption].
+46 b7 -> k(a) | k(ah) | k(ab) # label(non_clause).  [assumption].
+47 b1 -> i(a) & i(ah) | i(a) & i(s) | i(a) & i(ab) | i(d) & i(ah) | i(d) & i(s) | i(d) & i(ab) # label(non_clause).  [assumption].
+48 b2 -> k(s) & v(a) | k(s) & v(ah) | k(s) & v(ab) | k(d) & v(a) | k(d) & v(ah) | k(d) & v(ab) | k(a) & v(ah) | k(a) & v(ab) | k(ab) & v(ah) | k(ah) & v(ab) # label(non_clause).  [assumption].
+49 k(s) & v(a) -> i(ah) & i(d) & i(ab) # label(non_clause).  [assumption].
+50 k(s) & v(ah) -> i(a) & i(d) & i(ab) # label(non_clause).  [assumption].
+51 k(s) & v(ab) -> i(a) & i(ah) & i(d) # label(non_clause).  [assumption].
+52 k(d) & v(a) -> i(ah) & i(s) & i(ab) # label(non_clause).  [assumption].
+53 k(d) & v(ah) -> i(a) & i(s) & i(ab) # label(non_clause).  [assumption].
+54 k(d) & v(ab) -> i(a) & i(ah) & i(s) # label(non_clause).  [assumption].
+55 k(a) & v(ah) -> i(s) & i(d) & i(ab) # label(non_clause).  [assumption].
+56 k(a) & v(ab) -> i(ab) & i(s) & i(d) # label(non_clause).  [assumption].
+57 k(ah) & v(ab) -> i(a) & i(s) & i(d) # label(non_clause).  [assumption].
+58 k(ab) & v(ah) -> i(a) & i(s) & i(d) # label(non_clause).  [assumption].
+59 b3 -> i(d) & k(s) | i(s) & k(d) | i(s) & i(d) # label(non_clause).  [assumption].
+60 b4 -> v(a) & i(ah) | k(a) & i(ah) | i(a) & v(ah) | i(a) & k(ah) # label(non_clause).  [assumption].
+61 b5 -> v(a) & i(ab) | i(a) & v(ab) | v(s) & i(d) | i(s) & v(d) # label(non_clause).  [assumption].
+62 v(ab) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-k(a) | -v(a).  [clausify(1)].
+-k(a) | -k(ah).  [clausify(1)].
+-k(a) | -k(s).  [clausify(1)].
+-k(a) | -k(d).  [clausify(1)].
+-k(a) | -k(ab).  [clausify(1)].
+-k(ah) | -k(a).  [clausify(2)].
+-k(ah) | -v(ah).  [clausify(2)].
+-k(ah) | -k(s).  [clausify(2)].
+-k(ah) | -k(d).  [clausify(2)].
+-k(ah) | -k(ab).  [clausify(2)].
+-k(s) | -k(a).  [clausify(3)].
+-k(s) | -k(ah).  [clausify(3)].
+-k(s) | -v(s).  [clausify(3)].
+-k(s) | -k(d).  [clausify(3)].
+-k(s) | -k(ab).  [clausify(3)].
+-k(d) | -k(a).  [clausify(4)].
+-k(d) | -k(ah).  [clausify(4)].
+-k(d) | -k(s).  [clausify(4)].
+-k(d) | -v(d).  [clausify(4)].
+-k(d) | -k(ab).  [clausify(4)].
+-k(ab) | -k(a).  [clausify(5)].
+-k(ab) | -k(ah).  [clausify(5)].
+-k(ab) | -k(s).  [clausify(5)].
+-k(ab) | -k(d).  [clausify(5)].
+-k(ab) | -v(ab).  [clausify(5)].
+k(a) | k(ah) | k(s) | k(d) | k(ab).  [clausify(6)].
+k(ah) | k(a) | k(s) | k(d) | k(ab).  [clausify(7)].
+k(s) | k(a) | k(ah) | k(d) | k(ab).  [clausify(8)].
+k(d) | k(a) | k(ah) | k(s) | k(ab).  [clausify(9)].
+k(ab) | k(a) | k(ah) | k(s) | k(d).  [clausify(10)].
+-v(a) | -k(a).  [clausify(11)].
+-v(a) | -v(ah).  [clausify(11)].
+-v(a) | -v(s).  [clausify(11)].
+-v(a) | -v(d).  [clausify(11)].
+-v(a) | -v(ab).  [clausify(11)].
+-v(ah) | -v(a).  [clausify(12)].
+-v(ah) | -k(ah).  [clausify(12)].
+-v(ah) | -v(s).  [clausify(12)].
+-v(ah) | -v(d).  [clausify(12)].
+-v(ah) | -v(ab).  [clausify(12)].
+-v(s) | -v(a).  [clausify(13)].
+-v(s) | -v(ah).  [clausify(13)].
+-v(s) | -k(s).  [clausify(13)].
+-v(s) | -v(d).  [clausify(13)].
+-v(s) | -v(ab).  [clausify(13)].
+-v(d) | -v(a).  [clausify(14)].
+-v(d) | -v(ah).  [clausify(14)].
+-v(d) | -v(s).  [clausify(14)].
+-v(d) | -k(d).  [clausify(14)].
+-v(d) | -v(ab).  [clausify(14)].
+-v(ab) | -v(a).  [clausify(15)].
+-v(ab) | -v(ah).  [clausify(15)].
+-v(ab) | -v(s).  [clausify(15)].
+-v(ab) | -v(d).  [clausify(15)].
+-v(ab) | -k(ab).  [clausify(15)].
+v(a) | v(ah) | v(s) | v(d) | v(ab).  [clausify(16)].
+v(ah) | v(a) | v(s) | v(d) | v(ab).  [clausify(17)].
+v(s) | v(a) | v(ah) | v(d) | v(ab).  [clausify(18)].
+v(d) | v(a) | v(ah) | v(s) | v(ab).  [clausify(19)].
+v(ab) | v(a) | v(ah) | v(s) | v(d).  [clausify(20)].
+k(a) | v(a) | i(a).  [clausify(21)].
+k(ah) | v(ah) | i(ah).  [clausify(22)].
+k(s) | v(s) | i(s).  [clausify(23)].
+k(d) | v(d) | i(d).  [clausify(24)].
+k(ab) | v(ab) | i(ab).  [clausify(25)].
+-i(a) | -k(a).  [clausify(26)].
+-i(a) | -v(a).  [clausify(26)].
+-i(ah) | -k(ah).  [clausify(27)].
+-i(ah) | -v(ah).  [clausify(27)].
+-i(s) | -k(s).  [clausify(28)].
+-i(s) | -v(s).  [clausify(28)].
+-i(d) | -k(d).  [clausify(29)].
+-i(d) | -v(d).  [clausify(29)].
+-i(ab) | -k(ab).  [clausify(30)].
+-i(ab) | -v(ab).  [clausify(30)].
+-i(a) | k(ah) | k(s) | k(d) | k(ab).  [clausify(31)].
+-i(ah) | k(a) | k(s) | k(d) | k(ab).  [clausify(32)].
+-i(s) | k(a) | k(ah) | k(d) | k(ab).  [clausify(33)].
+-i(d) | k(a) | k(ah) | k(s) | k(ab).  [clausify(34)].
+-i(ab) | k(a) | k(ah) | k(s) | k(d).  [clausify(35)].
+-i(a) | v(ah) | v(s) | v(d) | v(ab).  [clausify(36)].
+-i(ah) | v(a) | v(s) | v(d) | v(ab).  [clausify(37)].
+-i(s) | v(a) | v(ah) | v(d) | v(ab).  [clausify(38)].
+-i(d) | v(a) | v(ah) | v(s) | v(ab).  [clausify(39)].
+-i(ab) | v(a) | v(ah) | v(s) | v(d).  [clausify(40)].
+-k(a) | v(ah) | v(s) | v(d) | v(ab).  [clausify(41)].
+-k(ah) | v(a) | v(s) | v(d) | v(ab).  [clausify(42)].
+-k(s) | v(a) | v(ah) | v(d) | v(ab).  [clausify(43)].
+-k(d) | v(a) | v(ah) | v(s) | v(ab).  [clausify(44)].
+-k(ab) | v(a) | v(ah) | v(s) | v(d).  [clausify(45)].
+-b7 | k(a) | k(ah) | k(ab).  [clausify(46)].
+b7.  [assumption].
+-b1 | i(a) | i(d).  [clausify(47)].
+-b1 | i(ah) | i(s) | i(ab).  [clausify(47)].
+b1.  [assumption].
+-b2 | k(s) | k(d) | k(a) | k(ab) | k(ah).  [clausify(48)].
+-b2 | k(s) | k(d) | k(a) | v(ah) | k(ah).  [clausify(48)].
+-b2 | k(s) | k(d) | v(ab) | k(a) | k(ab).  [clausify(48)].
+-b2 | k(s) | k(d) | v(ab) | v(ah).  [clausify(48)].
+-b2 | v(a) | v(ah) | v(ab).  [clausify(48)].
+b2.  [assumption].
+-k(s) | -v(a) | i(ah).  [clausify(49)].
+-k(s) | -v(a) | i(d).  [clausify(49)].
+-k(s) | -v(a) | i(ab).  [clausify(49)].
+-k(s) | -v(ah) | i(a).  [clausify(50)].
+-k(s) | -v(ah) | i(d).  [clausify(50)].
+-k(s) | -v(ah) | i(ab).  [clausify(50)].
+-k(s) | -v(ab) | i(a).  [clausify(51)].
+-k(s) | -v(ab) | i(ah).  [clausify(51)].
+-k(s) | -v(ab) | i(d).  [clausify(51)].
+-k(d) | -v(a) | i(ah).  [clausify(52)].
+-k(d) | -v(a) | i(s).  [clausify(52)].
+-k(d) | -v(a) | i(ab).  [clausify(52)].
+-k(d) | -v(ah) | i(a).  [clausify(53)].
+-k(d) | -v(ah) | i(s).  [clausify(53)].
+-k(d) | -v(ah) | i(ab).  [clausify(53)].
+-k(d) | -v(ab) | i(a).  [clausify(54)].
+-k(d) | -v(ab) | i(ah).  [clausify(54)].
+-k(d) | -v(ab) | i(s).  [clausify(54)].
+-k(a) | -v(ah) | i(s).  [clausify(55)].
+-k(a) | -v(ah) | i(d).  [clausify(55)].
+-k(a) | -v(ah) | i(ab).  [clausify(55)].
+-k(a) | -v(ab) | i(ab).  [clausify(56)].
+-k(a) | -v(ab) | i(s).  [clausify(56)].
+-k(a) | -v(ab) | i(d).  [clausify(56)].
+-k(ah) | -v(ab) | i(a).  [clausify(57)].
+-k(ah) | -v(ab) | i(s).  [clausify(57)].
+-k(ah) | -v(ab) | i(d).  [clausify(57)].
+-k(ab) | -v(ah) | i(a).  [clausify(58)].
+-k(ab) | -v(ah) | i(s).  [clausify(58)].
+-k(ab) | -v(ah) | i(d).  [clausify(58)].
+-b3 | i(d) | i(s).  [clausify(59)].
+-b3 | i(d) | k(d).  [clausify(59)].
+-b3 | k(s) | i(s).  [clausify(59)].
+b3.  [assumption].
+-b4 | v(a) | k(a) | i(a).  [clausify(60)].
+-b4 | v(a) | k(a) | v(ah) | k(ah).  [clausify(60)].
+-b4 | i(ah) | i(a).  [clausify(60)].
+-b4 | i(ah) | v(ah) | k(ah).  [clausify(60)].
+b4.  [assumption].
+-b5 | v(a) | i(a) | v(s) | i(s).  [clausify(61)].
+-b5 | v(a) | i(a) | v(s) | v(d).  [clausify(61)].
+-b5 | v(a) | i(a) | i(d) | i(s).  [clausify(61)].
+-b5 | v(a) | i(a) | i(d) | v(d).  [clausify(61)].
+-b5 | v(a) | v(ab) | v(s) | i(s).  [clausify(61)].
+-b5 | v(a) | v(ab) | v(s) | v(d).  [clausify(61)].
+-b5 | v(a) | v(ab) | i(d) | i(s).  [clausify(61)].
+-b5 | v(a) | v(ab) | i(d) | v(d).  [clausify(61)].
+-b5 | i(ab) | i(a) | v(s) | i(s).  [clausify(61)].
+-b5 | i(ab) | i(a) | v(s) | v(d).  [clausify(61)].
+-b5 | i(ab) | i(a) | i(d) | i(s).  [clausify(61)].
+-b5 | i(ab) | i(a) | i(d) | v(d).  [clausify(61)].
+-b5 | i(ab) | v(ab) | v(s) | i(s).  [clausify(61)].
+-b5 | i(ab) | v(ab) | v(s) | v(d).  [clausify(61)].
+-b5 | i(ab) | v(ab) | i(d) | i(s).  [clausify(61)].
+-b5 | i(ab) | v(ab) | i(d) | v(d).  [clausify(61)].
+b5.  [assumption].
+-v(ab).  [deny(62)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ b5, b2, b4, b3, b1, b7, v, k, i ]).
+Function symbol precedence:  function_order([ a, ab, d, s, ah ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+63 -k(a) | -v(a).  [clausify(1)].
+64 -k(a) | -k(ah).  [clausify(1)].
+65 -k(a) | -k(s).  [clausify(1)].
+66 -k(a) | -k(d).  [clausify(1)].
+67 -k(a) | -k(ab).  [clausify(1)].
+68 -k(ah) | -v(ah).  [clausify(2)].
+69 -k(ah) | -k(s).  [clausify(2)].
+70 -k(ah) | -k(d).  [clausify(2)].
+71 -k(ah) | -k(ab).  [clausify(2)].
+72 -k(s) | -v(s).  [clausify(3)].
+73 -k(s) | -k(d).  [clausify(3)].
+74 -k(s) | -k(ab).  [clausify(3)].
+75 -k(d) | -v(d).  [clausify(4)].
+76 -k(d) | -k(ab).  [clausify(4)].
+79 -v(a) | -v(ah).  [clausify(11)].
+80 -v(a) | -v(s).  [clausify(11)].
+81 -v(a) | -v(d).  [clausify(11)].
+83 -v(ah) | -v(s).  [clausify(12)].
+84 -v(ah) | -v(d).  [clausify(12)].
+86 -v(s) | -v(d).  [clausify(13)].
+90 k(a) | v(a) | i(a).  [clausify(21)].
+91 k(ah) | v(ah) | i(ah).  [clausify(22)].
+95 -i(a) | -k(a).  [clausify(26)].
+96 -i(a) | -v(a).  [clausify(26)].
+97 -i(ah) | -k(ah).  [clausify(27)].
+98 -i(ah) | -v(ah).  [clausify(27)].
+99 -i(s) | -k(s).  [clausify(28)].
+100 -i(s) | -v(s).  [clausify(28)].
+101 -i(d) | -k(d).  [clausify(29)].
+102 -i(d) | -v(d).  [clausify(29)].
+103 -i(ab) | -k(ab).  [clausify(30)].
+105 -i(a) | k(ah) | k(s) | k(d) | k(ab).  [clausify(31)].
+109 -i(ab) | k(a) | k(ah) | k(s) | k(d).  [clausify(35)].
+121 b7.  [assumption].
+124 b1.  [assumption].
+129 b2.  [assumption].
+130 -k(s) | -v(a) | i(ah).  [clausify(49)].
+131 -k(s) | -v(a) | i(d).  [clausify(49)].
+132 -k(s) | -v(a) | i(ab).  [clausify(49)].
+133 -k(s) | -v(ah) | i(a).  [clausify(50)].
+134 -k(s) | -v(ah) | i(d).  [clausify(50)].
+135 -k(s) | -v(ah) | i(ab).  [clausify(50)].
+139 -k(d) | -v(a) | i(ah).  [clausify(52)].
+140 -k(d) | -v(a) | i(s).  [clausify(52)].
+141 -k(d) | -v(a) | i(ab).  [clausify(52)].
+142 -k(d) | -v(ah) | i(a).  [clausify(53)].
+143 -k(d) | -v(ah) | i(s).  [clausify(53)].
+144 -k(d) | -v(ah) | i(ab).  [clausify(53)].
+148 -k(a) | -v(ah) | i(s).  [clausify(55)].
+149 -k(a) | -v(ah) | i(d).  [clausify(55)].
+150 -k(a) | -v(ah) | i(ab).  [clausify(55)].
+157 -k(ab) | -v(ah) | i(a).  [clausify(58)].
+158 -k(ab) | -v(ah) | i(s).  [clausify(58)].
+159 -k(ab) | -v(ah) | i(d).  [clausify(58)].
+163 b3.  [assumption].
+166 b4.  [assumption].
+183 b5.  [assumption].
+184 -v(ab).  [deny(62)].
+185 k(a) | k(ah) | k(ab).  [back_unit_del(120),unit_del(a,121)].
+186 i(ah) | i(s) | i(ab).  [back_unit_del(123),unit_del(a,124)].
+187 i(a) | i(d).  [back_unit_del(122),unit_del(a,124)].
+188 v(a) | v(ah).  [back_unit_del(128),unit_del(a,129),unit_del(d,184)].
+189 k(s) | k(d) | v(ah).  [back_unit_del(127),unit_del(a,129),unit_del(d,184)].
+190 k(s) | k(d) | k(a) | k(ab).  [back_unit_del(126),unit_del(a,129),unit_del(d,184)].
+191 k(s) | i(s).  [back_unit_del(162),unit_del(a,163)].
+192 i(d) | k(d).  [back_unit_del(161),unit_del(a,163)].
+193 i(d) | i(s).  [back_unit_del(160),unit_del(a,163)].
+194 i(ah) | i(a).  [back_unit_del(165),unit_del(a,166)].
+195 i(ab) | i(d) | v(d).  [back_unit_del(182),unit_del(a,183),unit_del(c,184)].
+196 i(ab) | v(s) | v(d).  [back_unit_del(180),unit_del(a,183),unit_del(c,184)].
+197 i(ab) | v(s) | i(s).  [back_unit_del(179),unit_del(a,183),unit_del(c,184)].
+198 v(a) | i(d) | v(d).  [back_unit_del(174),unit_del(a,183),unit_del(c,184)].
+199 v(a) | v(s) | v(d).  [back_unit_del(172),unit_del(a,183),unit_del(c,184)].
+200 v(a) | v(s) | i(s).  [back_unit_del(171),unit_del(a,183),unit_del(c,184)].
+201 -k(a) | v(ah) | v(s) | v(d).  [back_unit_del(115),unit_del(e,184)].
+202 -i(a) | v(ah) | v(s) | v(d).  [back_unit_del(110),unit_del(e,184)].
+203 k(ab) | i(ab).  [back_unit_del(94),unit_del(b,184)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.06 seconds.
+
+given #1 (I,wt=4): 63 -k(a) | -v(a).  [clausify(1)].
+
+given #2 (I,wt=4): 64 -k(a) | -k(ah).  [clausify(1)].
+
+given #3 (I,wt=4): 65 -k(a) | -k(s).  [clausify(1)].
+
+given #4 (I,wt=4): 66 -k(a) | -k(d).  [clausify(1)].
+
+given #5 (I,wt=4): 67 -k(a) | -k(ab).  [clausify(1)].
+
+given #6 (I,wt=4): 68 -k(ah) | -v(ah).  [clausify(2)].
+
+given #7 (I,wt=4): 69 -k(ah) | -k(s).  [clausify(2)].
+
+given #8 (I,wt=4): 70 -k(ah) | -k(d).  [clausify(2)].
+
+given #9 (I,wt=4): 71 -k(ah) | -k(ab).  [clausify(2)].
+
+given #10 (I,wt=4): 72 -k(s) | -v(s).  [clausify(3)].
+
+given #11 (I,wt=4): 73 -k(s) | -k(d).  [clausify(3)].
+
+given #12 (I,wt=4): 74 -k(s) | -k(ab).  [clausify(3)].
+
+given #13 (I,wt=4): 75 -k(d) | -v(d).  [clausify(4)].
+
+given #14 (I,wt=4): 76 -k(d) | -k(ab).  [clausify(4)].
+
+given #15 (I,wt=4): 79 -v(a) | -v(ah).  [clausify(11)].
+
+given #16 (I,wt=4): 80 -v(a) | -v(s).  [clausify(11)].
+
+given #17 (I,wt=4): 81 -v(a) | -v(d).  [clausify(11)].
+
+given #18 (I,wt=4): 83 -v(ah) | -v(s).  [clausify(12)].
+
+given #19 (I,wt=4): 84 -v(ah) | -v(d).  [clausify(12)].
+
+given #20 (I,wt=4): 86 -v(s) | -v(d).  [clausify(13)].
+
+given #21 (I,wt=6): 90 k(a) | v(a) | i(a).  [clausify(21)].
+
+given #22 (I,wt=6): 91 k(ah) | v(ah) | i(ah).  [clausify(22)].
+
+given #23 (I,wt=4): 95 -i(a) | -k(a).  [clausify(26)].
+
+given #24 (I,wt=4): 96 -i(a) | -v(a).  [clausify(26)].
+
+given #25 (I,wt=4): 97 -i(ah) | -k(ah).  [clausify(27)].
+
+given #26 (I,wt=4): 98 -i(ah) | -v(ah).  [clausify(27)].
+
+given #27 (I,wt=4): 99 -i(s) | -k(s).  [clausify(28)].
+
+given #28 (I,wt=4): 100 -i(s) | -v(s).  [clausify(28)].
+
+given #29 (I,wt=4): 101 -i(d) | -k(d).  [clausify(29)].
+
+given #30 (I,wt=4): 102 -i(d) | -v(d).  [clausify(29)].
+
+given #31 (I,wt=4): 103 -i(ab) | -k(ab).  [clausify(30)].
+
+given #32 (I,wt=10): 105 -i(a) | k(ah) | k(s) | k(d) | k(ab).  [clausify(31)].
+
+given #33 (I,wt=10): 109 -i(ab) | k(a) | k(ah) | k(s) | k(d).  [clausify(35)].
+
+given #34 (I,wt=1): 121 b7.  [assumption].
+
+given #35 (I,wt=1): 124 b1.  [assumption].
+
+given #36 (I,wt=1): 129 b2.  [assumption].
+
+given #37 (I,wt=6): 130 -k(s) | -v(a) | i(ah).  [clausify(49)].
+
+given #38 (I,wt=6): 131 -k(s) | -v(a) | i(d).  [clausify(49)].
+
+given #39 (I,wt=6): 132 -k(s) | -v(a) | i(ab).  [clausify(49)].
+
+given #40 (I,wt=6): 133 -k(s) | -v(ah) | i(a).  [clausify(50)].
+
+given #41 (I,wt=6): 134 -k(s) | -v(ah) | i(d).  [clausify(50)].
+
+given #42 (I,wt=6): 135 -k(s) | -v(ah) | i(ab).  [clausify(50)].
+
+given #43 (I,wt=6): 139 -k(d) | -v(a) | i(ah).  [clausify(52)].
+
+given #44 (I,wt=6): 140 -k(d) | -v(a) | i(s).  [clausify(52)].
+
+given #45 (I,wt=6): 141 -k(d) | -v(a) | i(ab).  [clausify(52)].
+
+given #46 (I,wt=6): 142 -k(d) | -v(ah) | i(a).  [clausify(53)].
+
+given #47 (I,wt=6): 143 -k(d) | -v(ah) | i(s).  [clausify(53)].
+
+given #48 (I,wt=6): 144 -k(d) | -v(ah) | i(ab).  [clausify(53)].
+
+given #49 (I,wt=6): 148 -k(a) | -v(ah) | i(s).  [clausify(55)].
+
+given #50 (I,wt=6): 149 -k(a) | -v(ah) | i(d).  [clausify(55)].
+
+given #51 (I,wt=6): 150 -k(a) | -v(ah) | i(ab).  [clausify(55)].
+
+given #52 (I,wt=6): 157 -k(ab) | -v(ah) | i(a).  [clausify(58)].
+
+given #53 (I,wt=6): 158 -k(ab) | -v(ah) | i(s).  [clausify(58)].
+
+given #54 (I,wt=6): 159 -k(ab) | -v(ah) | i(d).  [clausify(58)].
+
+given #55 (I,wt=1): 163 b3.  [assumption].
+
+given #56 (I,wt=1): 166 b4.  [assumption].
+
+given #57 (I,wt=1): 183 b5.  [assumption].
+
+given #58 (I,wt=2): 184 -v(ab).  [deny(62)].
+
+given #59 (I,wt=6): 185 k(a) | k(ah) | k(ab).  [back_unit_del(120),unit_del(a,121)].
+
+given #60 (I,wt=6): 186 i(ah) | i(s) | i(ab).  [back_unit_del(123),unit_del(a,124)].
+
+given #61 (I,wt=4): 187 i(a) | i(d).  [back_unit_del(122),unit_del(a,124)].
+
+given #62 (I,wt=4): 188 v(a) | v(ah).  [back_unit_del(128),unit_del(a,129),unit_del(d,184)].
+
+given #63 (I,wt=6): 189 k(s) | k(d) | v(ah).  [back_unit_del(127),unit_del(a,129),unit_del(d,184)].
+
+given #64 (I,wt=8): 190 k(s) | k(d) | k(a) | k(ab).  [back_unit_del(126),unit_del(a,129),unit_del(d,184)].
+
+given #65 (I,wt=4): 191 k(s) | i(s).  [back_unit_del(162),unit_del(a,163)].
+
+given #66 (I,wt=4): 192 i(d) | k(d).  [back_unit_del(161),unit_del(a,163)].
+
+given #67 (I,wt=4): 193 i(d) | i(s).  [back_unit_del(160),unit_del(a,163)].
+
+given #68 (I,wt=4): 194 i(ah) | i(a).  [back_unit_del(165),unit_del(a,166)].
+
+given #69 (I,wt=6): 195 i(ab) | i(d) | v(d).  [back_unit_del(182),unit_del(a,183),unit_del(c,184)].
+
+given #70 (I,wt=6): 196 i(ab) | v(s) | v(d).  [back_unit_del(180),unit_del(a,183),unit_del(c,184)].
+
+given #71 (I,wt=6): 197 i(ab) | v(s) | i(s).  [back_unit_del(179),unit_del(a,183),unit_del(c,184)].
+
+given #72 (I,wt=6): 198 v(a) | i(d) | v(d).  [back_unit_del(174),unit_del(a,183),unit_del(c,184)].
+
+given #73 (I,wt=6): 199 v(a) | v(s) | v(d).  [back_unit_del(172),unit_del(a,183),unit_del(c,184)].
+
+given #74 (I,wt=6): 200 v(a) | v(s) | i(s).  [back_unit_del(171),unit_del(a,183),unit_del(c,184)].
+
+given #75 (I,wt=8): 201 -k(a) | v(ah) | v(s) | v(d).  [back_unit_del(115),unit_del(e,184)].
+
+given #76 (I,wt=8): 202 -i(a) | v(ah) | v(s) | v(d).  [back_unit_del(110),unit_del(e,184)].
+
+given #77 (I,wt=4): 203 k(ab) | i(ab).  [back_unit_del(94),unit_del(b,184)].
+
+given #78 (A,wt=6): 204 k(a) | k(ab) | -k(d).  [resolve(185,b,70,a)].
+
+given #79 (T,wt=4): 209 i(a) | -v(d).  [resolve(187,b,102,a)].
+
+given #80 (T,wt=4): 210 i(a) | -k(d).  [resolve(187,b,101,a)].
+
+given #81 (T,wt=4): 211 v(a) | -v(d).  [resolve(188,b,84,a)].
+
+given #82 (T,wt=4): 212 v(a) | -v(s).  [resolve(188,b,83,a)].
+
+given #83 (A,wt=6): 205 k(a) | k(ab) | -k(s).  [resolve(185,b,69,a)].
+
+given #84 (T,wt=4): 220 k(s) | -v(s).  [resolve(191,b,100,a)].
+
+given #85 (T,wt=4): 221 k(d) | -v(d).  [resolve(192,a,102,a)].
+
+given #86 (T,wt=4): 222 i(d) | -v(s).  [resolve(193,b,100,a)].
+
+given #87 (T,wt=4): 223 i(d) | -k(s).  [resolve(193,b,99,a)].
+
+given #88 (A,wt=6): 206 k(a) | k(ab) | -v(ah).  [resolve(185,b,68,a)].
+
+given #89 (T,wt=4): 224 i(a) | -v(ah).  [resolve(194,a,98,a)].
+
+given #90 (T,wt=4): 225 i(a) | -k(ah).  [resolve(194,a,97,a)].
+
+given #91 (T,wt=4): 232 v(a) | v(d).  [resolve(212,b,199,b),merge(b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.06 (+ 0.23) seconds.
+% Length of proof is 47.
+% Level of proof is 8.
+% Maximum clause weight is 9.
+% Given clauses 91.
+
+1 k(a) -> -v(a) & -k(ah) & -k(s) & -k(d) & -k(ab) # label(non_clause).  [assumption].
+11 v(a) -> -k(a) & -v(ah) & -v(s) & -v(d) & -v(ab) # label(non_clause).  [assumption].
+12 v(ah) -> -v(a) & -k(ah) & -v(s) & -v(d) & -v(ab) # label(non_clause).  [assumption].
+26 i(a) -> -k(a) & -v(a) # label(non_clause).  [assumption].
+27 i(ah) -> -k(ah) & -v(ah) # label(non_clause).  [assumption].
+30 i(ab) -> -k(ab) & -v(ab) # label(non_clause).  [assumption].
+46 b7 -> k(a) | k(ah) | k(ab) # label(non_clause).  [assumption].
+48 b2 -> k(s) & v(a) | k(s) & v(ah) | k(s) & v(ab) | k(d) & v(a) | k(d) & v(ah) | k(d) & v(ab) | k(a) & v(ah) | k(a) & v(ab) | k(ab) & v(ah) | k(ah) & v(ab) # label(non_clause).  [assumption].
+60 b4 -> v(a) & i(ah) | k(a) & i(ah) | i(a) & v(ah) | i(a) & k(ah) # label(non_clause).  [assumption].
+61 b5 -> v(a) & i(ab) | i(a) & v(ab) | v(s) & i(d) | i(s) & v(d) # label(non_clause).  [assumption].
+62 v(ab) # label(non_clause) # label(goal).  [goal].
+63 -k(a) | -v(a).  [clausify(1)].
+80 -v(a) | -v(s).  [clausify(11)].
+81 -v(a) | -v(d).  [clausify(11)].
+83 -v(ah) | -v(s).  [clausify(12)].
+84 -v(ah) | -v(d).  [clausify(12)].
+96 -i(a) | -v(a).  [clausify(26)].
+97 -i(ah) | -k(ah).  [clausify(27)].
+103 -i(ab) | -k(ab).  [clausify(30)].
+120 -b7 | k(a) | k(ah) | k(ab).  [clausify(46)].
+121 b7.  [assumption].
+128 -b2 | v(a) | v(ah) | v(ab).  [clausify(48)].
+129 b2.  [assumption].
+165 -b4 | i(ah) | i(a).  [clausify(60)].
+166 b4.  [assumption].
+172 -b5 | v(a) | v(ab) | v(s) | v(d).  [clausify(61)].
+180 -b5 | i(ab) | v(ab) | v(s) | v(d).  [clausify(61)].
+183 b5.  [assumption].
+184 -v(ab).  [deny(62)].
+185 k(a) | k(ah) | k(ab).  [back_unit_del(120),unit_del(a,121)].
+188 v(a) | v(ah).  [back_unit_del(128),unit_del(a,129),unit_del(d,184)].
+194 i(ah) | i(a).  [back_unit_del(165),unit_del(a,166)].
+196 i(ab) | v(s) | v(d).  [back_unit_del(180),unit_del(a,183),unit_del(c,184)].
+199 v(a) | v(s) | v(d).  [back_unit_del(172),unit_del(a,183),unit_del(c,184)].
+211 v(a) | -v(d).  [resolve(188,b,84,a)].
+212 v(a) | -v(s).  [resolve(188,b,83,a)].
+225 i(a) | -k(ah).  [resolve(194,a,97,a)].
+228 v(s) | v(d) | -k(ab).  [resolve(196,a,103,a)].
+232 v(a) | v(d).  [resolve(212,b,199,b),merge(b)].
+236 i(a) | k(a) | k(ab).  [resolve(225,b,185,b)].
+238 v(a).  [resolve(232,b,211,b),merge(b)].
+246 -i(a).  [back_unit_del(96),unit_del(b,238)].
+247 -v(d).  [back_unit_del(81),unit_del(a,238)].
+248 -v(s).  [back_unit_del(80),unit_del(a,238)].
+250 -k(a).  [back_unit_del(63),unit_del(b,238)].
+251 k(ab).  [back_unit_del(236),unit_del(a,246),unit_del(b,250)].
+256 $F.  [back_unit_del(228),unit_del(a,248),unit_del(b,247),unit_del(c,251)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=91. Generated=287. Kept=193. proofs=1.
+Usable=50. Sos=16. Demods=0. Limbo=9, Disabled=276. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=93. Back_subsumed=60.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=58.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=76. Nonunit_bsub_feature_tests=252.
+Megabytes=0.22.
+User_CPU=0.06, System_CPU=0.25, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 15236 exit (max_proofs) Wed Jan 18 18:08:57 2023

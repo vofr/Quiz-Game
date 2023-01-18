@@ -1,0 +1,2 @@
+This is a quiz game made with Python and Prover9 to improve my Prover9 logics.
+It has 3 propositional logic problems made in Prover9. The directory Prover9-Mace4 contains Prover9 Gui version for Windows. 
